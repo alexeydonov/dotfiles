@@ -3,17 +3,12 @@
       relink: true
       create: true
 
-- create:
-  - ~/.config
-  - ~/.config/mc
-
-- link:
-    ~/:
-      glob: true
-      path: home/*
-      prefix: '.'
-    ~/.config:
-      glob: true
-      path: config/*
-    ~/.config/mc/ini: config_mc_ini
-
+- shell:
+    - command: "dotbot -C common/install.conf.yaml"
+      description: Run common script
+    - command: >
+        case "$(uname)" in
+          Darwin) dotbot -C macos/install.conf.yaml ;;
+          Linux) dotbot -C debian/install.conf.yaml ;;
+        esac
+      description: Run OS-specific scripts

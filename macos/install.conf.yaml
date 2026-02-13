@@ -1,0 +1,11 @@
+- defaults:
+    links:
+      relink: true
+      create: true
+
+- link:
+    ~/:
+      glob: true
+      path: home/*
+      prefix: '.'
+

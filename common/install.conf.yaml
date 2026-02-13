@@ -1,0 +1,25 @@
+- defaults:
+    links:
+      relink: true
+      create: true
+
+- create:
+  - ~/.config/mc
+
+- link:
+    ~/:
+      glob: true
+      path: home/*
+      prefix: '.'
+    ~/.config:
+      glob: true
+      path: config/*
+    ~/.config/mc/ini: config_mc_ini
+
+- shell:
+    - command: >
+        mkdir -p ~/.ssh && chmod 700 ~/.ssh &&
+        [ -f ~/.ssh/id_ed25519 ] ||
+        ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N "" -C "$(whoami)@$(hostname)" -q
+      description: Generate SSH key if missing
+

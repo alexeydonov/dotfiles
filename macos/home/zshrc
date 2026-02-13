@@ -1,0 +1,14 @@
+if [ -d ~/.zshrc.d ]; then
+    for rc in ~/.zshrc.d/*; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
+fi
+unset rc
+
+# Must be at the end of .zshrc
+
+source /opt/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
