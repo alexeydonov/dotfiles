@@ -1,0 +1,1 @@
+alias which="command -v"

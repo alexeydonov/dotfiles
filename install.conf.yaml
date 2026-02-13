@@ -1,0 +1,19 @@
+- defaults:
+    links:
+      relink: true
+      create: true
+
+- create:
+  - ~/.config
+  - ~/.config/mc
+
+- link:
+    ~/:
+      glob: true
+      path: home/*
+      prefix: '.'
+    ~/.config:
+      glob: true
+      path: config/*
+    ~/.config/mc/ini: config_mc_ini
+
