@@ -19,6 +19,7 @@
     "gpu",
     "display",
     "memory",
+    "swap",
     "disk",
     {
       "type": "physicaldisk",
