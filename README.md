@@ -2,14 +2,17 @@
 
 ## Pre-requisites
 
-```
-zsh zsh-autosuggestions zsh-syntax-highlight
-```
-
-On Debian:
+### macOS
 
 ```shell
-chsh /bin/zsh
+git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
+```
+
+### Debian
+
+```shell
+sudo apt install zsh zsh-antidote
+chsh -s /bin/zsh
 ```
 
 ## Installation
@@ -22,5 +25,5 @@ git clone git@github.com:alexeydonov/dotfiles.git ~/.dotfiles
 To use color prompt:
 
 ```shell
-echo emerald|lemon|frost|fire|sand|barbie|mono|root >~/.prompt
+echo "prompt emerald|lemon|frost|flame|sand|barbie|mono|danger" >~/.zshrc.d/prompt.zsh
 ```

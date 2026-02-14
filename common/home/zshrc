@@ -1,23 +1,42 @@
 # Set up the prompt
+fpath+=("$HOME/.local/share/zsh/site-functions")
 autoload -Uz promptinit
 promptinit
 
-declare -A prompts=(
-  [emerald]="%{%F{34}%}%n%{%F{40}%}@%{%F{46}%}%m%{%f%}:%{%F{154}%}%1~ %{%f%}$ "
-  [lemon]="%{%F{47}%}%n%{%F{156}%}@%{%F{227}%}%m%{%f%}:%{%F{231}%}%1~ %{%f%}$ "
-  [frost]="%{%F{39}%}%n%{%F{45}%}@%{%F{51}%}%m%{%f%}:%{%F{195}%}%1~ %{%f%}$ "
-  [fire]="%{%F{196}%}%n%{%F{202}%}@%{%F{208}%}%m%{%f%}:%{%F{220}%}%1~ %{%f%}$ "
-  [sand]="%{%F{216}%}%n%{%F{220}%}@%{%F{222}%}%m%{%f%}:%{%F{229}%}%1~ %{%f%}$ "
-  [barbie]="%{%F{165}%}%n%{%F{171}%}@%{%F{213}%}%m%{%f%}:%{%F{219}%}%1~ %{%f%}$ "
-  [mono]="%{%F{243}%}%n%{%F{245}%}@%{%F{249}%}%m%{%f%}:%{%F{254}%}%1~ %{%f%}$ "
-  [root]="%{%F{9}%}%n@%m%{%f%}:%{%F{9}%}%1~ %{%f%}$ "
-)
-[[ -f ~/.prompt ]] && theme=$(tr -d '\n' <~/.prompt 2>/dev/null)
-theme="${theme:-default}"
+# Colors
+export CLICOLOR=1
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS="Gxfxcxdxbxegedabagacad"
+export GREP_OPTIONS="--colour"
 
-export PS1="${prompts[$theme]}"
+# Aliases
+alias ..="cd .."
+alias ...="cd ../.."
+alias ~="cd ~"
+alias -- --="cd --"
 
-unset prompts theme
+alias ls="eza --icons=auto"
+alias l="ls --long"
+alias ll="l -a"
+export EZA_CONFIG_DIR="/Users/alexey/.config/eza"
+
+if [ -t 1 ]; then
+  if command -v bat >/dev/null 2>&1; then
+    alias cat='bat --plain --paging=never'
+  elif command -v batcat >/dev/null 2>&1; then
+    alias cat='batcat --plain --paging=never'
+  fi
+fi
+export BAT_THEME="Catppuccin Mocha"
+
+# Additional scripts, not tracked by dotbot!
+if [[ -d $HOME/.zshrc.d ]]; then
+  for rc in $HOME/.zshrc.d/*.zsh; do
+    if [[ -f "$rc" ]]; then
+      . "$rc"
+    fi
+  done
+fi
 
 # Something or other
 setopt histignorealldups sharehistory
@@ -38,7 +57,9 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+if command -v dircolors >/dev/null 2>&1; then
+  eval "$(dircolors -b)"
+fi
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -49,16 +70,26 @@ zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+setopt nocasematch
 
 # Antidote
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 for candidate in \
+  ~/.antidote/antidote.zsh \
   /usr/share/zsh-antidote/antidote.zsh
 do
   if [[ -f "$candidate" ]]; then
     source "$candidate"
+    break
   fi
 done
 unset candidate
 antidote load
 
+# Check dotfiles git status
+DOTBOT_DIR="$HOME/.dotfiles"
+if [[ -d "$DOTBOT_DIR/.git" ]]; then
+  if [[ -n "$(git -C "$DOTBOT_DIR" status --porcelain 2>/dev/null)" ]]; then
+    print -P "%F{yellow}⚠ Dotbot repo has uncommitted changes.%f"
+  fi
+fi
