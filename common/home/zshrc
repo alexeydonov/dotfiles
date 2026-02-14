@@ -18,7 +18,7 @@ alias -- --="cd --"
 alias ls="eza --icons=auto"
 alias l="ls --long"
 alias ll="l -a"
-export EZA_CONFIG_DIR="/Users/alexey/.config/eza"
+export EZA_CONFIG_DIR="$HOME/.config/eza"
 
 if [ -t 1 ]; then
   if command -v bat >/dev/null 2>&1; then
