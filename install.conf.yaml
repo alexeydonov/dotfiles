@@ -5,8 +5,8 @@
 
 - create:
   - ~/.config
-  - ~/.config/mc
   - ~/.zshrc.d
+  - ~/.local/share
 
 - link:
     ~/:
@@ -16,7 +16,6 @@
     ~/.config:
       path: common/config/*
       glob: true
-    ~/.config/mc/ini: common/config_mc_ini
     ~/.local/share:
       path: common/share/*
       glob: true
