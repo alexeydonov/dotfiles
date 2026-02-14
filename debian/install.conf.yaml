@@ -6,6 +6,6 @@
 - link:
     ~/:
       glob: true
-      path: home/*
+      path: debian/home/*
       prefix: '.'
 

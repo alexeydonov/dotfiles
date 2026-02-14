@@ -9,12 +9,12 @@
 - link:
     ~/:
       glob: true
-      path: home/*
+      path: common/home/*
       prefix: '.'
     ~/.config:
       glob: true
-      path: config/*
-    ~/.config/mc/ini: config_mc_ini
+      path: common/config/*
+    ~/.config/mc/ini: common/config_mc_ini
 
 - shell:
     - command: >

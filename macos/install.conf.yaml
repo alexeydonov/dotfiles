@@ -6,6 +6,6 @@
 - link:
     ~/:
       glob: true
-      path: home/*
+      path: macos/home/*
       prefix: '.'
 

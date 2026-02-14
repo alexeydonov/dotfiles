@@ -4,11 +4,11 @@
       create: true
 
 - shell:
-    - command: "dotbot -C common/install.conf.yaml"
+    - command: "./install -c common/install.conf.yaml"
       description: Run common script
     - command: >
         case "$(uname)" in
-          Darwin) dotbot -C macos/install.conf.yaml ;;
-          Linux) dotbot -C debian/install.conf.yaml ;;
+          Darwin) ./install -c macos/install.conf.yaml ;;
+          Linux) ./install -c debian/install.conf.yaml ;;
         esac
       description: Run OS-specific scripts
