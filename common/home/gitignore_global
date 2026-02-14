@@ -1,13 +1,11 @@
 # Backup files
-
 *~
 
 # macOS metadata
-
 .DS_Store
 
 # Xcode cache
-xcuserdata
+xcuserdata/
 
 # Rust artifacts
 Cargo.lock
