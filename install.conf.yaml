@@ -3,12 +3,23 @@
       relink: true
       create: true
 
+- create:
+  - ~/.config
+  - ~/.config/mc
+
+- link:
+    ~/:
+      path: common/home/*
+      glob: true
+      prefix: '.'
+    ~/.config:
+      path: common/config/*
+      glob: true
+    ~/.config/mc/ini: common/config_mc_ini
+
 - shell:
-    - command: "./install -c common/install.conf.yaml"
-      description: Run common script
     - command: >
-        case "$(uname)" in
-          Darwin) ./install -c macos/install.conf.yaml ;;
-          Linux) ./install -c debian/install.conf.yaml ;;
-        esac
-      description: Run OS-specific scripts
+        mkdir -p ~/.ssh && chmod 700 ~/.ssh &&
+        [ -f ~/.ssh/id_ed25519 ] ||
+        ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N "" -C "$(whoami)@$(hostname)" -q
+      description: Generate SSH key if missing

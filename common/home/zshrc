@@ -1,0 +1,64 @@
+# Set up the prompt
+autoload -Uz promptinit
+promptinit
+
+declare -A prompts=(
+  [emerald]="%{%F{34}%}%n%{%F{40}%}@%{%F{46}%}%m%{%f%}:%{%F{154}%}%1~ %{%f%}$ "
+  [lemon]="%{%F{47}%}%n%{%F{156}%}@%{%F{227}%}%m%{%f%}:%{%F{231}%}%1~ %{%f%}$ "
+  [frost]="%{%F{39}%}%n%{%F{45}%}@%{%F{51}%}%m%{%f%}:%{%F{195}%}%1~ %{%f%}$ "
+  [fire]="%{%F{196}%}%n%{%F{202}%}@%{%F{208}%}%m%{%f%}:%{%F{220}%}%1~ %{%f%}$ "
+  [sand]="%{%F{216}%}%n%{%F{220}%}@%{%F{222}%}%m%{%f%}:%{%F{229}%}%1~ %{%f%}$ "
+  [barbie]="%{%F{165}%}%n%{%F{171}%}@%{%F{213}%}%m%{%f%}:%{%F{219}%}%1~ %{%f%}$ "
+  [mono]="%{%F{243}%}%n%{%F{245}%}@%{%F{249}%}%m%{%f%}:%{%F{254}%}%1~ %{%f%}$ "
+  [root]="%{%F{9}%}%n@%m%{%f%}:%{%F{9}%}%1~ %{%f%}$ "
+)
+[[ -f ~/.prompt ]] && theme=$(tr -d '\n' <~/.prompt 2>/dev/null)
+theme="${theme:-default}"
+
+export PS1="${prompts[$theme]}"
+
+unset prompts theme
+
+# Something or other
+setopt histignorealldups sharehistory
+
+# Use emacs keybindings even if our EDITOR is set to vi
+bindkey -e
+
+# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
+# Comletion
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+eval "$(dircolors -b)"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+# Antidote
+zstyle ':antidote:bundle' use-friendly-names 'yes'
+for candidate in \
+  /usr/share/zsh-antidote/antidote.zsh
+do
+  if [[ -f "$candidate" ]]; then
+    source "$candidate"
+  fi
+done
+unset candidate
+antidote load
+

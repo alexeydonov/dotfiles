@@ -1,3 +1,3 @@
-alias ls="eza --icons=auto"
-alias l="ls --long --git"
-alias ll="ls --long --git -all"
+alias ls="eza --icons=auto --git"
+alias l="ls --long"
+alias ll="l -all"
