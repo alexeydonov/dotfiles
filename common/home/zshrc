@@ -38,6 +38,7 @@ if [[ -d $HOME/.zshrc.d ]]; then
 fi
 
 # Antidote
+typeset -U fpath
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 for candidate in \
   ~/.antidote/antidote.zsh \
@@ -49,6 +50,7 @@ do
   fi
 done
 unset candidate
+# compinit is called here, no more fpath modifications after this line
 antidote load
 
 # History keyboard shortcuts
@@ -67,8 +69,8 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
 # Comletion
-autoload -Uz compinit
-compinit
+#autoload -Uz compinit
+#compinit
 # zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete
 # _correct 
@@ -95,6 +97,6 @@ bindkey '^I' complete-word
 DOTBOT_DIR="$HOME/.dotfiles"
 if [[ -d "$DOTBOT_DIR/.git" ]]; then
   if [[ -n "$(git -C "$DOTBOT_DIR" status --porcelain 2>/dev/null)" ]]; then
-    print -P "%F{yellow}⚠ Dotbot repo has uncommitted changes.%f"
+    print -P "%F{yellow}⚠ dotfiles repo has uncommitted changes.%f"
   fi
 fi
