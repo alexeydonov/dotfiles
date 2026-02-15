@@ -1,3 +1,4 @@
-export FPATH="/opt/local/share/zsh/site-functions:$FPATH"
+fpath+=("$HOME/.local/share/zsh/site-functions")
+fpath+=("/opt/local/share/zsh/site-functions")
 export PATH="/opt/local/lib/ImageMagick7/bin:/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="$HOME/bin:$PATH"
