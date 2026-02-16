@@ -1,3 +1,8 @@
+# FPath setup
+[[ -d $HOME/.local/share/zsh/site-functions ]] &&fpath+=($HOME/.local/share/zsh/site-functions)
+[[ -d /opt/local/share/zsh/site-functions ]] && fpath+=(/opt/local/share/zsh/site-functions)
+[[ -d /usr/share/zsh/site-functions ]] && fpath+=(/usr/share/zsh/site-functions)
+
 # Set up the prompt
 autoload -Uz promptinit
 promptinit
@@ -38,7 +43,6 @@ if [[ -d $HOME/.zshrc.d ]]; then
 fi
 
 # Antidote
-typeset -U fpath
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 for candidate in \
   ~/.antidote/antidote.zsh \
@@ -50,6 +54,8 @@ do
   fi
 done
 unset candidate
+# Clean up fpath
+typeset -U fpath
 # compinit is called here, no more fpath modifications after this line
 antidote load
 
@@ -69,11 +75,11 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
 # Comletion
-#autoload -Uz compinit
-#compinit
+autoload -Uz compinit
+compinit -C -d ~/.zcompdump
 # zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete
-# _correct 
+# _correct
 # _approximate
 # zstyle ':completion:*' format 'Completing %d'
 # zstyle ':completion:*' group-name ''
