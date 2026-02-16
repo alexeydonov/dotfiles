@@ -42,15 +42,15 @@ echo "prompt <name-see-below>" >~/.zshrc.d/prompt.zsh
 ```
 
 > [!TIP]
-> | Prompt name | user@hostname:basename $                |
-> |-------------|-----------------------------------------|
-> | autumn      | `#F3B28E` `#C5291C` `#EC6A2C` `#A46361` |
-
-| barbie      | <span style="font-family: monospace;"><span style="color: #C529F6;">user</span><span style="color: #C866F7;">@</span><span style="color: #EF8DF9;">host</span>:<span style="color: #F3B2FA;">basename</span> $</span> |
-| danger      | <span style="font-family: monospace;"><span style="color: #EA3323;">user@host</span>:<span style="color: #EA3323;">basename</span> $</span> |
-| emerald     | <span style="font-family: monospace;"><span style="color: #4EAC31;">user</span><span style="color: #61D43F;">@</span><span style="color: #75FB4C;">host</span>:<span style="color: #C0FD50;">basename</span> $</span> |
-| flame       | <span style="font-family: monospace;"><span style="color: #EA3323;">user</span><span style="color: #EC6A2C;">@</span><span style="color: #EF8D34;">host</span>:<span style="color: #F9D949;">basename</span> $</span> |
-| frost       | <span style="font-family: monospace;"><span style="color: #4EACF8;">user</span><span style="color: #61D4FA;">@</span><span style="color: #75FBFD;">host</span>:<span style="color: #DFFEFF;">basename</span> $</span> |
-| lemon       | <span style="font-family: monospace;"><span style="color: #75FB75;">user</span><span style="color: #C0FD95;">@</span><span style="color: #FFFF7A;">host</span>:<span style="color: #FFFFFF;">basename</span> $</span> |
-| mono        | <span style="font-family: monospace;"><span style="color: #767676;">user</span><span style="color: #8A8A8A;">@</span><span style="color: #B2B2B2;">host</span>:<span style="color: #E4E4E4;">basename</span> $</span> |
-| sand        | <span style="font-family: monospace;"><span style="color: #F3B28E;">user</span><span style="color: #F9D949;">@</span><span style="color: #F9D992;">host</span>:<span style="color: #FFFFB8;">basename</span> $</span> |
+>
+> | Prompt name | user@hostname:basename $ |
+> |-------------|--------------------------|
+> | autumn      | ![user](https://placehold.co/16x16/F3B28E/F3B28E.png) ![at](https://placehold.co/16x16/C5291C/C5291C.png) ![hostname](https://placehold.co/16x16/EC6A2C/EC6A2C.png) ![basename](https://placehold.co/16x16/A46361/A46361.png) |
+> | barbie      | ![user](https://placehold.co/16x16/C529F6/C529F6.png) ![at](https://placehold.co/16x16/C866F7/C866F7.png) ![hostname](https://placehold.co/16x16/EF8DF9/EF8DF9.png) ![basename](https://placehold.co/16x16/F3B2FA/F3B2FA.png) |
+> | danger      | ![user](https://placehold.co/16x16/EA3323/EA3323.png) ![at](https://placehold.co/16x16/EA3323/EA3323.png) ![hostname](https://placehold.co/16x16/EA3323/EA3323.png) ![basename](https://placehold.co/16x16/EA3323/EA3323.png)|
+> | emerald     | ![user](https://placehold.co/16x16/4EAC31/4EAC31.png) ![at](https://placehold.co/16x16/61D43F/61D43F.png) ![hostname](https://placehold.co/16x16/75FB4C/75FB4C.png) ![basename](https://placehold.co/16x16/C0FD50/C0FD50.png) |
+> | flame       | ![user](https://placehold.co/16x16/EA3323/EA3323.png) ![at](https://placehold.co/16x16/EC6A2C/EC6A2C.png) ![hostname](https://placehold.co/16x16/EF8D34/EF8D34.png) ![basename](https://placehold.co/16x16/F9D949/F9D949.png) |
+> | frost       | ![user](https://placehold.co/16x16/4EACF8/4EACF8.png) ![at](https://placehold.co/16x16/61D4FA/61D4FA.png) ![hostname](https://placehold.co/16x16/75FBFD/75FBFD.png) ![basename](https://placehold.co/16x16/DFFEFF/DFFEFF.png) |
+> | lemon       | ![user](https://placehold.co/16x16/75FB75/75FB75.png) ![at](https://placehold.co/16x16/C0FD95/C0FD95.png) ![hostname](https://placehold.co/16x16/FFFF7A/FFFF7A.png) ![basename](https://placehold.co/16x16/FFFFFF/FFFFFF.png) |
+> | mono        | ![user](https://placehold.co/16x16/767676/767676.png) ![at](https://placehold.co/16x16/8A8A8A/8A8A8A.png) ![hostname](https://placehold.co/16x16/B2B2B2/B2B2B2.png) ![basename](https://placehold.co/16x16/E4E4E4/E4E4E4.png) |
+> | sand        | ![user](https://placehold.co/16x16/F3B28E/F3B28E.png) ![at](https://placehold.co/16x16/F9D949/F9D949.png) ![hostname](https://placehold.co/16x16/F9D992/F9D992.png) ![basename](https://placehold.co/16x16/FFFFB8/FFFFB8.png) |
