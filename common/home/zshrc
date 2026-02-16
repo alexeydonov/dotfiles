@@ -19,7 +19,7 @@ alias ...="cd ../.."
 alias ~="cd ~"
 alias -- --="cd --"
 
-alias ls="eza --icons=auto"
+alias ls="eza --icons=auto --git"
 alias l="ls --long"
 alias ll="l -a"
 export EZA_CONFIG_DIR="$HOME/.config/eza"
