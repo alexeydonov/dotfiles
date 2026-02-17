@@ -56,7 +56,6 @@ done
 unset candidate
 # Clean up fpath
 typeset -U fpath
-# compinit is called here, no more fpath modifications after this line
 antidote load
 
 # History keyboard shortcuts
@@ -104,6 +103,18 @@ zstyle ':completion:*' use-compctl false
 setopt nocasematch
 bindkey '^I' complete-word
 
+# Docker
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
+alias dcr="docker compose restart"
+alias vdc="vi docker-compose.yml"
+dl() { docker logs $1 }
+de() { docker exec -it $1 sh }
+
+compdef _docker de=docker-exec
+compdef _docker dl=docker-logs
+
+# Dotfiles repo check
 DOTBOT_DIR="$HOME/.dotfiles"
 if [[ -d "$DOTBOT_DIR/.git" ]]; then
   if [[ -n "$(git -C "$DOTBOT_DIR" status --porcelain 2>/dev/null)" ]]; then
