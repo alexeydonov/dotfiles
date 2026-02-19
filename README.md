@@ -3,22 +3,18 @@
 ## Pre-requisites
 
 > [!NOTE]
-> Required packages are usually covered by appropriate [Ansible playbook](https://github.com/alexeydonov/playbooks.git).
+> Required packages are usually covered by appropriate [Ansible playbook](https://github.com/alexeydonov/playbooks.git) or [cloud-init config](https://gist.github.com/alexeydonov/62c7718502eae61f0e9a4f2bd74e716c).
 
 ### macOS
 
 ```shell
-sudo port install bat eza
-```
-
-```shell
-git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
+sudo port install bat eza git
 ```
 
 ### Debian
 
 ```shell
-sudo apt install zsh zsh-antidote bat eza
+sudo apt install zsh bat eza git
 ```
 
 ```shell
@@ -46,6 +42,9 @@ echo "prompt <theme-see-below>" >~/.zshrc.d/prompt.zsh
 Prompt format is `username@hostname:basename $`.
 Theme sets colors for `username`, `@`, `hostname`, and `basename`.
 
+> [!TIP]
+> `:` and `$` always use default shell color.
+
 | Theme       | Colors                   |
 |-------------|--------------------------|
 | autumn      | ![user](https://placehold.co/16x16/F3B28E/F3B28E.png) ![at](https://placehold.co/16x16/C5291C/C5291C.png) ![hostname](https://placehold.co/16x16/EC6A2C/EC6A2C.png) ![basename](https://placehold.co/16x16/A46361/A46361.png) |
@@ -57,6 +56,3 @@ Theme sets colors for `username`, `@`, `hostname`, and `basename`.
 | lemon       | ![user](https://placehold.co/16x16/75FB75/75FB75.png) ![at](https://placehold.co/16x16/C0FD95/C0FD95.png) ![hostname](https://placehold.co/16x16/FFFF7A/FFFF7A.png) ![basename](https://placehold.co/16x16/FFFFFF/FFFFFF.png) |
 | mono        | ![user](https://placehold.co/16x16/767676/767676.png) ![at](https://placehold.co/16x16/8A8A8A/8A8A8A.png) ![hostname](https://placehold.co/16x16/B2B2B2/B2B2B2.png) ![basename](https://placehold.co/16x16/E4E4E4/E4E4E4.png) |
 | sand        | ![user](https://placehold.co/16x16/F3B28E/F3B28E.png) ![at](https://placehold.co/16x16/F9D949/F9D949.png) ![hostname](https://placehold.co/16x16/F9D992/F9D992.png) ![basename](https://placehold.co/16x16/FFFFB8/FFFFB8.png) |
-
-> [!TIP]
-> `:` and `$` always use default shell color.
