@@ -31,7 +31,7 @@ if [ -t 1 ]; then
     alias cat='batcat --plain --paging=never'
   fi
 fi
-export BAT_THEME="Catppuccin Mocha"
+export BAT_THEME="Nord"
 
 # Additional scripts, not tracked by dotbot!
 if [[ -d $HOME/.zshrc.d ]]; then
