@@ -49,7 +49,7 @@ for candidate in \
   /usr/share/zsh-antidote/antidote.zsh
 do
   if [[ -f "$candidate" ]]; then
-    source "$candidate"
+    . "$candidate"
     break
   fi
 done
