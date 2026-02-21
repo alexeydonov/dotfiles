@@ -22,11 +22,12 @@
 
 - shell:
     - command: >
-        mkdir -p ~/.ssh && chmod 700 ~/.ssh &&
-        [ -f ~/.ssh/id_ed25519 ] ||
-        ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N "" -C "$(whoami)@$(hostname)" -q
+        mkdir -p ~/.ssh &&
+        chmod 700 ~/.ssh &&
+        [ -f ~/.ssh/id_ed25519 ] || ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N "" -C "$(whoami)@$(hostname)" -q
       description: Generate SSH key if missing
     - command: >
-        [[ ! -d ~/.antidote ]] &&
-        git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
+        if [[ ! -d ~/.antidote ]]; then
+          git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
+        fi
       description: Install Antidote plugin manager
