@@ -18,8 +18,6 @@ promptinit
 
 # Colors
 export CLICOLOR=1
-export LSCOLORS="Gxfxcxdxbxegedabagacad"
-export LS_COLORS="Gxfxcxdxbxegedabagacad"
 export GREP_OPTIONS="--colour"
 
 # Aliases
