@@ -6,6 +6,19 @@ typeset -U fpath
 [[ -d /opt/local/share/zsh/site-functions ]] && fpath+=(/opt/local/share/zsh/site-functions)
 [[ -d /usr/share/zsh/site-functions ]] && fpath+=(/usr/share/zsh/site-functions)
 
+if [[ -d /opt/local/lib/ImageMagick7/bin ]]; then
+  path=(/opt/local/lib/ImageMagick7/bin $path)
+fi
+if [[ -d /opt/local/bin ]]; then
+  path=(/opt/local/bin $path)
+fi
+if [[ -d /opt/local/sbin ]]; then
+  path=(/opt/local/sbin $path)
+fi
+if [[ -d $HOME/.local/bin ]]; then
+  path=($HOME/.local/bin $path)
+fi
+
 # Set up the prompt
 autoload -Uz promptinit
 promptinit
@@ -123,17 +136,4 @@ if [[ -d "$DOTBOT_DIR/.git" ]]; then
   if [[ -n "$(git -C "$DOTBOT_DIR" status --porcelain 2>/dev/null)" ]]; then
     print -P "%F{yellow}⚠ dotfiles repo has uncommitted changes.%f"
   fi
-fi
-
-if [[ -d /opt/local/lib/ImageMagick7/bin ]]; then
-  path=(/opt/local/lib/ImageMagick7/bin $path)
-fi
-if [[ -d /opt/local/bin ]]; then
-  path=(/opt/local/bin $path)
-fi
-if [[ -d /opt/local/sbin ]]; then
-  path=(/opt/local/sbin $path)
-fi
-if [[ -d $HOME/.local/bin ]]; then
-  path=($HOME/.local/bin $path)
 fi
