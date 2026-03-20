@@ -1,0 +1,9 @@
+[skip_apps]
+apps = [
+  "discord"
+]
+
+[app_mappings]
+"com.mitchellh.ghostty" = ["ghostty", "+new-window"]
+"org.gnome.Epiphany" = ["flatpak", "run", "org.gnome.Epiphany"]
+

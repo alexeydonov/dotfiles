@@ -6,6 +6,12 @@ typeset -U fpath
 [[ -d /opt/local/share/zsh/site-functions ]] && fpath+=(/opt/local/share/zsh/site-functions)
 [[ -d /usr/share/zsh/site-functions ]] && fpath+=(/usr/share/zsh/site-functions)
 
+# Path setup
+[[ -d /opt/local/lib/ImageMagick7/bin ]] && path=(/opt/local/lib/ImageMagick7/bin $path)
+[[ -d /opt/local/bin ]] && path=(/opt/local/bin $path)
+[[ -d /opt/local/sbin ]] && path=(/opt/local/sbin $path)
+[[ -d $HOME/.local/bin ]] && path=($HOME/.local/bin $path)
+
 # Set up the prompt
 autoload -Uz promptinit
 promptinit
@@ -44,20 +50,21 @@ if [[ -d $HOME/.zshrc.d ]]; then
     fi
   done
 fi
+unset rc
 
 # Antidote
-zstyle ':antidote:bundle' use-friendly-names 'yes'
 for candidate in \
   ~/.antidote/antidote.zsh \
   /usr/share/zsh-antidote/antidote.zsh
 do
   if [[ -f "$candidate" ]]; then
+    zstyle ':antidote:bundle' use-friendly-names 'yes'
     . "$candidate"
+    antidote load
     break
   fi
 done
 unset candidate
-antidote load
 
 # History keyboard shortcuts
 bindkey '^[[A' history-substring-search-up
@@ -125,15 +132,3 @@ if [[ -d "$DOTBOT_DIR/.git" ]]; then
   fi
 fi
 
-if [[ -d /opt/local/lib/ImageMagick7/bin ]]; then
-  path=(/opt/local/lib/ImageMagick7/bin $path)
-fi
-if [[ -d /opt/local/bin ]]; then
-  path=(/opt/local/bin $path)
-fi
-if [[ -d /opt/local/sbin ]]; then
-  path=(/opt/local/sbin $path)
-fi
-if [[ -d $HOME/.local/bin ]]; then
-  path=($HOME/.local/bin $path)
-fi
