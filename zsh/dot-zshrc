@@ -40,6 +40,13 @@ if [ -t 1 ]; then
 fi
 export BAT_THEME="Nord"
 
+# Antidote
+if [[ -f "$HOME/.local/share/antidote/antidote.zsh" ]]; then
+  zstyle ':antidote:bundle' use-friendly-names 'yes'
+  . "$HOME/.local/share/antidote/antidote.zsh"
+  antidote load
+fi
+
 # Additional scripts, not tracked by dotbot!
 if [[ -d $HOME/.zshrc.d ]]; then
   for rc in $HOME/.zshrc.d/*.zsh; do
@@ -49,14 +56,6 @@ if [[ -d $HOME/.zshrc.d ]]; then
   done
 fi
 unset rc
-
-# Antidote
-if [[ -f "$HOME/.local/share/antidote/antidote.zsh" ]]; then
-  zstyle ':antidote:bundle' use-friendly-names 'yes'
-  . "$candidate"
-  antidote load
-  break
-fi
 
 # History keyboard shortcuts
 bindkey '^[[A' history-substring-search-up
