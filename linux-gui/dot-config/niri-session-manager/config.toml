@@ -6,4 +6,5 @@ apps = [
 [app_mappings]
 "com.mitchellh.ghostty" = ["ghostty", "+new-window"]
 "org.gnome.Epiphany" = ["flatpak", "run", "org.gnome.Epiphany"]
+"org.mozilla.firefox" = ["flatpak", "run", "org.mozilla.firefox"]
 
