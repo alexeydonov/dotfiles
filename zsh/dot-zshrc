@@ -129,4 +129,3 @@ if [[ -d "$DOTBOT_DIR/.git" ]]; then
     print -P "%F{yellow}⚠ dotfiles repo has uncommitted changes.%f"
   fi
 fi
-
