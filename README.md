@@ -50,8 +50,8 @@ echo "prompt <theme-see-below>" >~/.zshrc.d/prompt.zsh
 
 ### User prompt
 
-User prompt, appropriately named `user` is a minimal distaction-free prompt.
-The format is `basename $` and it does not modify standart shell color.
+User prompt, appropriately named `user` is a minimal distraction-free prompt.
+The format is `basename $` and it does not modify standard shell color.
 
 ### Server prompts
 
