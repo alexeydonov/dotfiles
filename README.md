@@ -23,7 +23,7 @@ chsh -s /bin/zsh
 ```shell
 git clone git@github.com:alexeydonov/dotfiles.git ~/.dotfiles
 mkdir -p ~/.local/share
-git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.local/share/.antidote
+git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.local/share/antidote
 cd ~/.dotfiles
 stow --dotfiles <packages-see-below>
 ```
