@@ -8,16 +8,13 @@
 ### macOS
 
 ```shell
-sudo port install bat eza git
+sudo port install git bat eza fzf zoxide
 ```
 
 ### Debian
 
 ```shell
-sudo apt install zsh bat eza git
-```
-
-```shell
+sudo apt install zsh git bat eza fzf zoxide
 chsh -s /bin/zsh
 ```
 
@@ -25,11 +22,18 @@ chsh -s /bin/zsh
 
 ```shell
 git clone git@github.com:alexeydonov/dotfiles.git ~/.dotfiles
+mkdir -p ~/.local/share
+git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.local/share/.antidote
+cd ~/.dotfiles
+stow --dotfiles <packages-see-below>
 ```
 
-```shell
-~/.dotfiles/install
-```
+### Available packages
+
+* git
+* zsh
+* utils
+* linux-gui
 
 ## Color prompt
 
@@ -39,14 +43,18 @@ To automatically set prompt theme, call `prompt <theme-name>` during startup:
 echo "prompt <theme-see-below>" >~/.zshrc.d/prompt.zsh
 ```
 
+### User prompt
+
+User prompt, appropriately named `user` is a minimal distaction-free prompt.
+The format is `basename $` and it does not modify standart shell color.
+
+### Server prompts
+
 Prompt format is `username@hostname:basename $`.
 Theme sets colors for `username`, `@`, `hostname`, and `basename`.
 
-> [!TIP]
-> `:` and `$` always use default shell color.
-
-| Theme       | Colors                   |
-|-------------|--------------------------|
+| Theme       | Colors                        |
+|-------------|-------------------------------|
 | autumn      | ![user](https://placehold.co/16x16/F3B28E/F3B28E.png) ![at](https://placehold.co/16x16/C5291C/C5291C.png) ![hostname](https://placehold.co/16x16/EC6A2C/EC6A2C.png) ![basename](https://placehold.co/16x16/A46361/A46361.png) |
 | barbie      | ![user](https://placehold.co/16x16/C529F6/C529F6.png) ![at](https://placehold.co/16x16/C866F7/C866F7.png) ![hostname](https://placehold.co/16x16/EF8DF9/EF8DF9.png) ![basename](https://placehold.co/16x16/F3B2FA/F3B2FA.png) |
 | danger      | ![user](https://placehold.co/16x16/EA3323/EA3323.png) ![at](https://placehold.co/16x16/EA3323/EA3323.png) ![hostname](https://placehold.co/16x16/EA3323/EA3323.png) ![basename](https://placehold.co/16x16/EA3323/EA3323.png)|
@@ -56,3 +64,6 @@ Theme sets colors for `username`, `@`, `hostname`, and `basename`.
 | lemon       | ![user](https://placehold.co/16x16/75FB75/75FB75.png) ![at](https://placehold.co/16x16/C0FD95/C0FD95.png) ![hostname](https://placehold.co/16x16/FFFF7A/FFFF7A.png) ![basename](https://placehold.co/16x16/FFFFFF/FFFFFF.png) |
 | mono        | ![user](https://placehold.co/16x16/767676/767676.png) ![at](https://placehold.co/16x16/8A8A8A/8A8A8A.png) ![hostname](https://placehold.co/16x16/B2B2B2/B2B2B2.png) ![basename](https://placehold.co/16x16/E4E4E4/E4E4E4.png) |
 | sand        | ![user](https://placehold.co/16x16/F3B28E/F3B28E.png) ![at](https://placehold.co/16x16/F9D949/F9D949.png) ![hostname](https://placehold.co/16x16/F9D992/F9D992.png) ![basename](https://placehold.co/16x16/FFFFB8/FFFFB8.png) |
+
+> [!TIP]
+> `:` and `$` always use default shell color.
