@@ -14,6 +14,7 @@ window-rule {
 }
 window-rule {
     match app-id="org.gnome.NautilusPreviewer"
+    match title="About Mozilla Firefox"
     open-floating true
 }
 window-rule {
