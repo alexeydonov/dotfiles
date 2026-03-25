@@ -1,0 +1,125 @@
+animations {
+    window-open {
+        duration-ms 550
+        curve "ease-out-cubic"
+
+        custom-shader r"
+            // TV effect adapted from Burn My Windows by Simon Schneegans
+            // https://github.com/Schneegans/Burn-My-Windows
+            //
+            // API differences from BMW → niri:
+            //   uProgress / uForOpening  →  niri_clamped_progress (separate open/close fns)
+            //   iTexCoord (normalized)   →  coords_geo.xy / size_geo.xy
+            //   getInputColor(uv)        →  texture2D(niri_tex, niri_geo_to_tex * geo)
+            //   setOutputColor(color)    →  return color  (premultiplied alpha)
+
+            vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+                const float BLUR_WIDTH = 0.01;  // Width of the soft edge gradients
+                const float TB_TIME    = 0.7;   // Fraction of time used for top/bottom expand
+                const float LR_TIME    = 0.4;   // Fraction of time used for left/right expand
+                const float LR_DELAY   = 0.6;   // Fraction of time before left/right starts
+                const float FF_TIME    = 0.1;   // Fraction of time for the initial fade-in
+                const float SCALING    = 0.5;   // Vertical squish at peak compression
+
+                // For opening, BMW uses: prog = 1 - easeOutQuad(uProgress)
+                // prog goes 1→0: starts fully collapsed, ends fully visible.
+                float x     = niri_clamped_progress;
+                float eased = -x * (x - 2.0);   // easeOutQuad
+                float prog  = 1.0 - eased;
+
+                // coords_geo.xy is already normalized 0→1 within the window (same as
+                // BMW's iTexCoord). Do NOT divide by size_geo — that would produce
+                // near-zero values and break the mask gradients.
+                vec2 coords = coords_geo.xy;
+
+                // Vertically compress the window toward its center line.
+                // scale=0 when prog=0 (full height), scale>0 when prog>0 (squished).
+                float scale = 1.0 / mix(1.0, SCALING, prog) - 1.0;
+                coords.y    = coords.y * (scale + 1.0) - scale * 0.5;
+
+                // Normalised progress values for each animation phase
+                float tbProg = smoothstep(0.0, 1.0, clamp(prog / TB_TIME, 0.0, 1.0));
+                float lrProg = smoothstep(0.0, 1.0, clamp((prog - LR_DELAY) / LR_TIME, 0.0, 1.0));
+                float ffProg = smoothstep(0.0, 1.0, clamp((prog - 1.0 + FF_TIME) / FF_TIME, 0.0, 1.0));
+
+                // Top-center-bottom gradient: 1.0 at the horizontal midline, 0.0 at top/bottom edges
+                float tb = coords.y * 2.0;
+                tb        = tb < 1.0 ? tb : 2.0 - tb;
+
+                // Left-center-right gradient: 1.0 at the vertical midline, 0.0 at left/right edges
+                float lr = coords.x * 2.0;
+                lr        = lr < 1.0 ? lr : 2.0 - lr;
+
+                // Alpha masks: 1 where the window is visible, 0 where it has collapsed/faded
+                float tbMask = 1.0 - smoothstep(0.0, 1.0, clamp((tbProg - tb) / BLUR_WIDTH, 0.0, 1.0));
+                float lrMask = 1.0 - smoothstep(0.0, 1.0, clamp((lrProg - lr) / BLUR_WIDTH, 0.0, 1.0));
+                float ffMask = 1.0 - smoothstep(0.0, 1.0, ffProg);
+
+                float mask = tbMask * lrMask * ffMask;
+
+                // Sample the window texture at the vertically-scaled coordinates.
+                // Pass the modified coords (still in 0→1 geo space) directly to the matrix.
+                vec3 coords_tex = niri_geo_to_tex * vec3(coords, 1.0);
+                vec4 color      = texture2D(niri_tex, coords_tex.st);
+
+                // Premultiplied alpha: multiply the whole vec4 by the mask
+                color *= mask;
+
+                return color;
+            }
+        "
+    }
+
+    window-close {
+        duration-ms 550
+        curve "ease-out-quad"
+
+        custom-shader r"
+            // TV effect adapted from Burn My Windows by Simon Schneegans
+            // https://github.com/Schneegans/Burn-My-Windows
+
+            vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+                const float BLUR_WIDTH = 0.01;
+                const float TB_TIME    = 0.7;
+                const float LR_TIME    = 0.4;
+                const float LR_DELAY   = 0.6;
+                const float FF_TIME    = 0.1;
+                const float SCALING    = 0.5;
+
+                // For closing, BMW uses: prog = easeOutQuad(uProgress)
+                // prog goes 0→1: starts fully visible, ends fully collapsed.
+                float x    = niri_clamped_progress;
+                float prog = -x * (x - 2.0);   // easeOutQuad
+
+                // coords_geo.xy is already 0→1 within the window — use directly.
+                vec2 coords = coords_geo.xy;
+
+                float scale = 1.0 / mix(1.0, SCALING, prog) - 1.0;
+                coords.y    = coords.y * (scale + 1.0) - scale * 0.5;
+
+                float tbProg = smoothstep(0.0, 1.0, clamp(prog / TB_TIME, 0.0, 1.0));
+                float lrProg = smoothstep(0.0, 1.0, clamp((prog - LR_DELAY) / LR_TIME, 0.0, 1.0));
+                float ffProg = smoothstep(0.0, 1.0, clamp((prog - 1.0 + FF_TIME) / FF_TIME, 0.0, 1.0));
+
+                float tb = coords.y * 2.0;
+                tb        = tb < 1.0 ? tb : 2.0 - tb;
+
+                float lr = coords.x * 2.0;
+                lr        = lr < 1.0 ? lr : 2.0 - lr;
+
+                float tbMask = 1.0 - smoothstep(0.0, 1.0, clamp((tbProg - tb) / BLUR_WIDTH, 0.0, 1.0));
+                float lrMask = 1.0 - smoothstep(0.0, 1.0, clamp((lrProg - lr) / BLUR_WIDTH, 0.0, 1.0));
+                float ffMask = 1.0 - smoothstep(0.0, 1.0, ffProg);
+
+                float mask = tbMask * lrMask * ffMask;
+
+                vec3 coords_tex = niri_geo_to_tex * vec3(coords, 1.0);
+                vec4 color      = texture2D(niri_tex, coords_tex.st);
+
+                color *= mask;
+
+                return color;
+            }
+        "
+    }
+}
