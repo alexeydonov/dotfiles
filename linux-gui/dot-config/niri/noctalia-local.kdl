@@ -45,4 +45,5 @@ binds {
     Super+S hotkey-overlay-title="Toggle Shell Settings" { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
     XF86Tools { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
     Mod+Alt+W hotkey-overlay-title="Open Wallpaper Settings" { spawn-sh "qs -c noctalia-shell ipc call wallpaper toggle"; }
+    Ctrl+Alt+Delete hotkey-overlay-title="Session Menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
 }
