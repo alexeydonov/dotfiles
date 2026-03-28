@@ -13,7 +13,7 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+D repeat=false { spawn "vicinae" "toggle"; }
+    Mod+D repeat=false { spawn-sh "echo -n '[\"toggle\"]' | socat - ~/.cache/albert/ipc_socket"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty" "+new-window"; }

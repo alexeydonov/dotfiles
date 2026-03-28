@@ -4,6 +4,20 @@
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
+    match app-id=r#"albert"#
+    draw-border-with-background false
+    open-floating true
+    focus-ring {
+        off
+    }
+    border {
+        off
+    }
+    shadow {
+        off
+    }
+}
+window-rule {
     match app-id=r#"^org\.gnome\."#
     draw-border-with-background false
 }
