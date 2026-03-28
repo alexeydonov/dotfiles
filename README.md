@@ -35,6 +35,7 @@ stow --dotfiles <packages-see-below>
 * zsh
 * utils
 * linux-gui
+* macos
 
 ### Modifications
 

@@ -1,0 +1,35 @@
+# initial-window = false
+
+background-opacity = 0.90
+background-opacity-cells = true
+background-blur = macos-glass-clear
+
+window-padding-x = 4
+window-padding-y = 4
+window-padding-balance = true
+
+cursor-style = block
+
+window-inherit-working-directory = false
+working-directory = home
+
+font-family = JetBrainsMono Nerd Font
+font-feature = +calt
+font-size = 14
+
+shell-integration-features = sudo,title,ssh-env,ssh-terminfo,no-cursor
+
+config-file = ?auto/theme.ghostty
+
+keybind = shift+page_up=scroll_page_up
+keybind = shift+page_down=scroll_page_down
+keybind = ctrl+alt+r=reload_config
+
+quick-terminal-position = top
+quick-terminal-size = 30%,50%
+keybind = global:alt+§=toggle_quick_terminal
+
+macos-icon = custom
+# macos-icon-ghost-color = #ffffff
+# macos-icon-screen-color = #000000,#000000
+macos-custom-icon = ~/Library/Application Support/com.mitchellh.ghostty/icon.png
