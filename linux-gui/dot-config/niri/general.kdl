@@ -1,4 +1,5 @@
 spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "vicinae" "server"
 
 prefer-no-csd
 
