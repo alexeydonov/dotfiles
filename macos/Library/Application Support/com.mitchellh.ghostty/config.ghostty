@@ -32,4 +32,4 @@ keybind = global:alt+§=toggle_quick_terminal
 macos-icon = custom
 # macos-icon-ghost-color = #ffffff
 # macos-icon-screen-color = #000000,#000000
-macos-custom-icon = ~/Library/Application Support/com.mitchellh.ghostty/icon.png
+macos-custom-icon = ~/Library/Application Support/com.mitchellh.ghostty/icon-blue.png
