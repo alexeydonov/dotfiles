@@ -39,7 +39,7 @@ switch-events {
 
 binds {
     Mod+Space hotkey-overlay-title="Open AI Assistant" { spawn-sh "qs -c noctalia-shell ipc call plugin:assistant-panel toggle"; }
-    // Mod+D hotkey-overlay-title="Open App Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+Shift+D hotkey-overlay-title="Open App Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
     Mod+E hotkey-overlay-title="Open Emoji Finder" { spawn-sh "qs -c noctalia-shell ipc call launcher emoji"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     Super+S hotkey-overlay-title="Toggle Shell Settings" { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
