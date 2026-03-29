@@ -6,7 +6,7 @@
 [user]
 	name = Alexey Donov
 	email = alexeydonov@mac.com
-	signingkey = /Users/alexey/.ssh/id_ed25519.pub
+	signingKey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMOk4uARsUSGbqbrqopoEUHLAq2+g8551nXCAFWiDzp6 alexey@studio.local"
 [alias]
   co = checkout
   st = status
