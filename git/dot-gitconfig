@@ -6,7 +6,7 @@
 [user]
 	name = Alexey Donov
 	email = alexeydonov@mac.com
-	signingKey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMOk4uARsUSGbqbrqopoEUHLAq2+g8551nXCAFWiDzp6 alexey@studio.local"
+	signingkey = ~/.ssh/id_ed25519.pub
 [alias]
   co = checkout
   st = status
@@ -34,3 +34,5 @@
 	default = current
 [gpg]
 	format = ssh
+[commit]
+	gpgsign = true
