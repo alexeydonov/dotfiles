@@ -26,7 +26,7 @@ keybind = shift+page_down=scroll_page_down
 keybind = ctrl+alt+r=reload_config
 
 quick-terminal-position = top
-quick-terminal-size = 30%,50%
+quick-terminal-size = 50%,50%
 keybind = global:alt+§=toggle_quick_terminal
 
 macos-icon = custom
