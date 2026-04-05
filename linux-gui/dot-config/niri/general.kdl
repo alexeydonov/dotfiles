@@ -1,5 +1,5 @@
 spawn-at-startup "qs" "-c" "noctalia-shell"
-spawn-at-startup "albert" "--platformtheme" "gnome"
+spawn-at-startup "albert" "--platformtheme" "gnome" ">/tmp/albert.log"
 
 prefer-no-csd
 
