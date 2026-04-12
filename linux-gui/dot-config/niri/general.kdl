@@ -3,7 +3,7 @@ spawn-at-startup "qs" "-c" "noctalia-shell"
 prefer-no-csd
 
 environment {
-  XDG_CURRENT_DESKTOP "niri"
+    XDG_CURRENT_DESKTOP "niri"
 }
 
 hotkey-overlay {

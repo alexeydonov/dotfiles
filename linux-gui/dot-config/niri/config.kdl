@@ -1,5 +1,6 @@
 include "general.kdl"
 include "layout.kdl"
+include "blur.kdl"
 include "window-rules.kdl"
 include "input.kdl"
 include "output.kdl"
