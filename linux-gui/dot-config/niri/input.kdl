@@ -41,7 +41,7 @@
 
     mouse {
         // off
-        natural-scroll
+        // natural-scroll
         accel-speed -0.3
         accel-profile "adaptive"
         // scroll-method "no-scroll"
