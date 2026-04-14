@@ -21,11 +21,10 @@ chsh -s /bin/zsh
 ## Installation
 
 ```shell
+mkdir -p ~/.local/share ~/.zshrc.d
 git clone git@github.com:alexeydonov/dotfiles.git ~/.dotfiles
-mkdir -p ~/.local/share
 git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.local/share/antidote
 cd ~/.dotfiles
-mkdir ~/.zshrc.d
 stow --dotfiles <packages-see-below>
 ```
 
