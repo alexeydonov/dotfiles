@@ -6,8 +6,12 @@ blur {
 }
 
 window-rule {
-	//match app-id="Nautilus"
-	
+	background-effect {
+		blur true
+	}
+}
+
+window-rule {
 	popups {
 		geometry-corner-radius 6
 		opacity 0.8
