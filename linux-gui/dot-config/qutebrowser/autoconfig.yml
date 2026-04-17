@@ -20,10 +20,12 @@ settings:
     global: dark
   completion.shrink:
     global: true
+  completion.use_best_match:
+    global: true
   content.notifications.enabled:
     https://meduza.io: false
   input.insert_mode.auto_load:
-    global: true
+    global: false
   input.insert_mode.leave_on_load:
     global: true
   new_instance_open_target:
