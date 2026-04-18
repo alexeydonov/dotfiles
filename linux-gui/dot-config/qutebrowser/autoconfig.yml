@@ -24,6 +24,10 @@ settings:
     global: true
   content.notifications.enabled:
     https://meduza.io: false
+  fonts.default_family:
+    global: JetBrainsMono Nerd Font
+  fonts.default_size:
+    global: 10pt
   input.insert_mode.auto_load:
     global: false
   input.insert_mode.leave_on_load:
@@ -32,8 +36,23 @@ settings:
     global: window
   scrolling.smooth:
     global: true
+  statusbar.padding:
+    global:
+      bottom: 4
+      left: 8
+      right: 8
+      top: 4
   statusbar.show:
     global: in-mode
+  statusbar.widgets:
+    global:
+    - keypress
+    - search_match
+    - url
+    - scroll
+    - history
+    - tabs
+    - progress
   tabs.last_close:
     global: close
   tabs.show:
