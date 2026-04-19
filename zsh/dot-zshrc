@@ -122,3 +122,11 @@ if [[ -d "$DOTBOT_DIR/.git" ]]; then
     print -P "%F{yellow}⚠ dotfiles repo has uncommitted changes.%f"
   fi
 fi
+
+# Password store repo check
+PASS_STORE_DIR="$HOME/.password_store"
+if [[ -d "$PASS_STORE_DIR/.git" ]]; then
+  if [[ -n "$(git -C "$PASS_STORE_DIR" status --porcelain 2>/dev/null)" ]]; then
+    print -P "%F{yellow} password store repo has uncommited changes.%f"
+  fi
+fi
