@@ -2,7 +2,7 @@ blur {
 // 	passes 3
 // 	offset 6.0
 // 	noise 0.05
-	saturation 0.9
+// 	saturation 0.9
 }
 
 window-rule {
