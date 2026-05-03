@@ -2,9 +2,9 @@ typeset -U path
 typeset -U fpath
 
 # FPath setup
-[[ -d $HOME/.local/share/zsh/site-functions ]] &&fpath+=($HOME/.local/share/zsh/site-functions)
-[[ -d /opt/local/share/zsh/site-functions ]] && fpath+=(/opt/local/share/zsh/site-functions)
 [[ -d /usr/share/zsh/site-functions ]] && fpath+=(/usr/share/zsh/site-functions)
+[[ -d /opt/local/share/zsh/site-functions ]] && fpath+=(/opt/local/share/zsh/site-functions)
+[[ -d $HOME/.local/share/zsh/site-functions ]] &&fpath+=($HOME/.local/share/zsh/site-functions)
 
 # Path setup
 [[ -d /opt/local/lib/ImageMagick7/bin ]] && path=(/opt/local/lib/ImageMagick7/bin $path)
