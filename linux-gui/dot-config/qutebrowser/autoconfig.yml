@@ -14,8 +14,17 @@ settings:
     global:
       normal:
         <Ctrl+Shift+p>: spawn --userscript password_fill
+        <Ctrl+z>: undo
         <Meta+n>: open -w
-        O: cmd-set-text -s :open --private
+        H: scroll left
+        L: scroll right
+        O: cmd-set-text -s :open -w
+        P: cmd-set-text -s :open --private
+        d: scroll-page 0 0.5
+        h: back
+        l: forward
+        u: scroll-page 0 -0.5
+        x: tab-close
   colors.webpage.preferred_color_scheme:
     global: dark
   completion.shrink:
