@@ -17,7 +17,7 @@ font-family = JetBrainsMono Nerd Font
 font-feature = +calt
 font-size = 14
 
-shell-integration-features = sudo,title,ssh-env,ssh-terminfo,no-cursor
+shell-integration-features = sudo,title,ssh-env,no-cursor
 
 config-file = ?auto/theme.ghostty
 
