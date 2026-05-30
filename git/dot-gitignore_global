@@ -45,3 +45,5 @@ dist/
 *.wasm
 *.obj
 *.o
+
+**/.claude/settings.local.json
