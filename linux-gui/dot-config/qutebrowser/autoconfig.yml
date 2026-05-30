@@ -32,7 +32,9 @@ settings:
   completion.use_best_match:
     global: true
   content.javascript.clipboard:
+    https://docs.fedoraproject.org: access-paste
     https://github.com: access-paste
+    https://tailscale.com: access-paste
   content.notifications.enabled:
     https://meduza.io: false
   fonts.default_family:
