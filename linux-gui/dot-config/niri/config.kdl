@@ -7,6 +7,7 @@ include "output.kdl"
 include "animations.kdl"
 include "tv-animation.kdl"
 include "binds.kdl"
-include optional=true "noctalia.kdl"
+include "noctalia.kdl"
 include optional=true "noctalia-local.kdl"
 include optional=true "local.kdl"
+
