@@ -5,18 +5,15 @@
 > [!NOTE]
 > Required packages are usually covered by appropriate [Ansible playbook](https://github.com/alexeydonov/playbooks.git) or [cloud-init config](https://gist.github.com/alexeydonov/62c7718502eae61f0e9a4f2bd74e716c).
 
-### macOS
+Required packages:
 
-```shell
-sudo port install git bat eza fzf zoxide
-```
+* git
+* bat
+* eza
+* fzf
+* zoxide
 
-### Debian
-
-```shell
-sudo apt install zsh git bat eza fzf zoxide
-chsh -s /bin/zsh
-```
+`zsh` shell must be user's active shell.
 
 ## Installation
 
@@ -30,6 +27,7 @@ curl -fsSL https://github.com/alexeydonov/dotfiles/raw/refs/heads/master/install
 * zsh
 * utils
 * linux-gui
+* wallpapers
 * macos
 
 ### Modifications
