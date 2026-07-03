@@ -20,15 +20,6 @@ promptinit
 export CLICOLOR=1
 export GREP_OPTIONS="--colour"
 
-# Aliases
-alias ..="cd .."
-alias ...="cd ../.."
-alias ~="cd ~"
-alias -- --="cd --"
-
-alias ls="eza --icons=auto --git --group --time-style=long-iso"
-alias l="ls --long"
-alias ll="l -a"
 export EZA_CONFIG_DIR="$HOME/.config/eza"
 
 if [ -t 1 ]; then
