@@ -1,0 +1,13 @@
+{
+    "colorscheme": "catppuccin-macchiato-transparent",
+    "ftoptions": false,
+    "relativeruler": true,
+    "savecursor": true,
+    "saveundo": true,
+    "scrollbar": true,
+    "scrollbarchar": "▏",
+    "tabstospaces": true,
+    "lsp.server": "swift=sourcekit-lsp,nix=nixd",
+    "lsp.formatOnSave": true,
+    "lsp.tabcompletion": true
+}
